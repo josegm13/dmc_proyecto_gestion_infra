@@ -7,33 +7,27 @@ on:
     branches: ["main"]
 
 jobs:
-  build-and-test:
+  build-and-smoke-test:
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: docker_workflow  # todos los comandos se ejecutan aquí
 
-
     steps:
-      - name: Clonar repositorio
+      - name: 📥 Clonar repositorio
         uses: actions/checkout@v4
 
-      - name: Configurar Python
+      - name: 🐍 Configurar Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-
-
-      - name: Entrar a docker_workflow
-        run: cd docker_workflow
 
       - name: 📦 Instalar dependencias
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          
 
-      -  name: 🚀 Arrancar app Flask y probar endpoint
+      - name: 🚀 Arrancar app Flask y probar endpoint
         run: |
           nohup python app.py &           # arranca app en background
           sleep 5                         # espera 5 segundos a que arranque
