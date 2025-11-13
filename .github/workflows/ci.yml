@@ -30,7 +30,7 @@ jobs:
           pip install pytest
 
       - name: Ejecutar pruebas
-        run: pytest -v
+        run: pytest docker_workflow/tests/ -v
 
       - name: Construir imagen Docker
         run: docker build -t flask-app:latest .
