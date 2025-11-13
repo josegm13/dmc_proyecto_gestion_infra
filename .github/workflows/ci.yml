@@ -41,6 +41,6 @@ jobs:
 
       - name: 7.- Test de contenedor
         run: |
-          docker run -d -p 8080:8080 flask-app:latest
+          docker run -d -p 8081:8080 flask-app:latest
           sleep 5
-          curl -f http://localhost:8080/hello
+          curl -f http://localhost:8081/hello
